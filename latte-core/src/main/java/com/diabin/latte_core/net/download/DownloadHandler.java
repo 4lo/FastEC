@@ -1,71 +1,90 @@
 package com.diabin.latte_core.net.download;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 
-
-import com.diabin.latte_core.app.Latte;
+import com.diabin.latte_core.net.RestCreator;
+import com.diabin.latte_core.net.callback.IError;
+import com.diabin.latte_core.net.callback.IFailure;
 import com.diabin.latte_core.net.callback.IRequest;
 import com.diabin.latte_core.net.callback.ISuccess;
-import com.diabin.latte_core.util.file.FileUtil;
 
-import java.io.File;
-import java.io.InputStream;
+import java.util.WeakHashMap;
 
 import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
-final class SaveFileTask extends AsyncTask<Object, Void, File> {
+public final class DownloadHandler {
 
+    private final String URL;
+    private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
     private final IRequest REQUEST;
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String NAME;
     private final ISuccess SUCCESS;
+    private final IFailure FAILURE;
+    private final IError ERROR;
 
-    SaveFileTask(IRequest REQUEST, ISuccess SUCCESS) {
-        this.REQUEST = REQUEST;
-        this.SUCCESS = SUCCESS;
+    public DownloadHandler(String url,
+                           IRequest request,
+                           String downDir,
+                           String extension,
+                           String name,
+                           ISuccess success,
+                           IFailure failure,
+                           IError error) {
+        this.URL = url;
+        this.REQUEST = request;
+        this.DOWNLOAD_DIR = downDir;
+        this.EXTENSION = extension;
+        this.NAME = name;
+        this.SUCCESS = success;
+        this.FAILURE = failure;
+        this.ERROR = error;
     }
 
-    @Override
-    protected File doInBackground(Object... params) {
-        String downloadDir = (String) params[0];
-        String extension = (String) params[1];
-        final ResponseBody body = (ResponseBody) params[2];
-        final String name = (String) params[3];
-        final InputStream is = body.byteStream();
-        if (downloadDir == null || downloadDir.equals("")) {
-            downloadDir = "down_loads";
-        }
-        if (extension == null || extension.equals("")) {
-            extension = "";
-        }
-        if (name == null) {
-            return FileUtil.writeToDisk(is, downloadDir, extension.toUpperCase(), extension);
-        } else {
-            return FileUtil.writeToDisk(is, downloadDir, name);
-        }
-    }
-
-    @Override
-    protected void onPostExecute(File file) {
-        super.onPostExecute(file);
-        if (SUCCESS != null) {
-            SUCCESS.onSuccess(file.getPath());
-        }
+    public final void handleDownload() {
         if (REQUEST != null) {
-            REQUEST.onRequestEnd();
+            REQUEST.onRequestStart();
         }
-        autoInstallApk(file);
-    }
 
-    private void autoInstallApk(File file) {
-        if (FileUtil.getExtension(file.getPath()).equals("apk")) {
-            final Intent install = new Intent();
-            install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            install.setAction(Intent.ACTION_VIEW);
-            install.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-            Latte.getApplicationContext().startActivity(install);
-        }
+        RestCreator
+                .getRestService()
+                .download(URL, PARAMS)
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            final ResponseBody responseBody = response.body();
+                            final SaveFileTask task = new SaveFileTask(REQUEST, SUCCESS);
+                            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
+                                    DOWNLOAD_DIR, EXTENSION, responseBody, NAME);
+
+                            //这里一定要注意判断，否则文件下载不全
+                            if (task.isCancelled()) {
+                                if (REQUEST != null) {
+                                    REQUEST.onRequestEnd();
+                                }
+                            }
+                        } else {
+                            if (ERROR != null) {
+                                ERROR.onError(response.code(), response.message());
+                            }
+                        }
+                        RestCreator.getParams().clear();
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        if (FAILURE != null) {
+                            FAILURE.onFailure();
+                            RestCreator.getParams().clear();
+                        }
+                    }
+                });
     }
 }
 

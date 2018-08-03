@@ -1,8 +1,15 @@
 package com.diabin.latte_core.app;
 
-public enum ConfigType {
+public enum ConfigKeys {
     API_HOST,
     APPLICATION_CONTEXT,
     CONFIG_READY,
-    ICON
+    ICON,
+    LOADER_DELAYED,
+    INTERCEPTOR,
+    WE_CHAT_APP_ID,
+    WE_CHAT_APP_SECRET,
+    ACTIVITY,
+    HANDLER,
+    JAVASCRIPT_INTERFACE
 }
