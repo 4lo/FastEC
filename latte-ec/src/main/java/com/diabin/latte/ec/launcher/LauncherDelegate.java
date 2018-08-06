@@ -23,7 +23,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener{
     TextView mTvTimer = null;
 
     private Timer mTimer = null;
-    private int mCount = 5;
+    private int mCount = 3;
 
     @OnClick(R2.id.tv_launcher_timer)
     void onClickTimerView() {

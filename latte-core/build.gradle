@@ -64,7 +64,8 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
 
     //banner
-    api 'com.bigkoo:ConvenientBanner:2.1.4'
+    //api 'com.bigkoo:ConvenientBanner:2.1.4'
+    api 'com.bigkoo:convenientbanner:2.0.5'
 
     //json
     api 'com.alibaba:fastjson:1.2.47'

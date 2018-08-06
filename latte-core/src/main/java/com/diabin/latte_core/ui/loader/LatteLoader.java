@@ -1,8 +1,7 @@
-package com.diabin.latte_core.ui;
+package com.diabin.latte_core.ui.loader;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;
-import android.support.v7.app.WindowDecorActionBar;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,8 +11,6 @@ import com.diabin.latte_core.util.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
-
-import retrofit2.http.DELETE;
 
 public class LatteLoader {
 
@@ -28,7 +25,7 @@ public class LatteLoader {
         showLoading(context, type.name());
     }
 
-    public static void  showLoading(Context context,String type) {
+    private static void  showLoading(Context context,String type) {
         final AppCompatDialog dialog = new AppCompatDialog(context, R.style.dialog);
 
         final AVLoadingIndicatorView avLoadingIndicatorView = LoaderCreator.create(type,context);

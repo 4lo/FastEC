@@ -6,10 +6,9 @@ import com.diabin.latte_core.net.callback.IError;
 import com.diabin.latte_core.net.callback.IFailure;
 import com.diabin.latte_core.net.callback.IRequest;
 import com.diabin.latte_core.net.callback.ISuccess;
-import com.diabin.latte_core.ui.LoaderStyle;
+import com.diabin.latte_core.ui.loader.LoaderStyle;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
 

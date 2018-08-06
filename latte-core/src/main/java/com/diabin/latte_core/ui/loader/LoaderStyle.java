@@ -1,4 +1,4 @@
-package com.diabin.latte_core.ui;
+package com.diabin.latte_core.ui.loader;
 
 
 

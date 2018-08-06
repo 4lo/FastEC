@@ -1,11 +1,8 @@
 package com.diabin.latte_core.net.callback;
 
 
-import com.diabin.latte_core.ui.LatteLoader;
-import com.diabin.latte_core.ui.LoaderStyle;
-
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
+import com.diabin.latte_core.ui.loader.LatteLoader;
+import com.diabin.latte_core.ui.loader.LoaderStyle;
 
 import retrofit2.Call;
 import retrofit2.Callback;
