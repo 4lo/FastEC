@@ -1,5 +1,6 @@
 package com.diabin.latte.ec.sign;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -10,6 +11,9 @@ import android.widget.Toast;
 import com.diabin.latte.ec.R;
 import com.diabin.latte.ec.R2;
 import com.diabin.latte_core.delegates.LatteDelegate;
+import com.diabin.latte_core.net.RestClient;
+import com.diabin.latte_core.net.callback.ISuccess;
+import com.diabin.latte_core.util.log.LatteLogger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -21,10 +25,37 @@ public class SignIndelegate extends LatteDelegate{
     @BindView(R2.id.edit_sign_in_password)
     TextInputEditText mPassword = null;
 
+
+    private ISignListener mISignListener = null;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ISignListener) {
+            mISignListener = (ISignListener) activity;
+        }
+    }
+
     @OnClick(R2.id.btn_sign_in)
     void onClickSignIn() {
         if (checkForm()) {
-            Toast.makeText(getContext(),"验证通过",Toast.LENGTH_SHORT);
+            RestClient.builder()
+                    .url("http://192.168.123.120:80/api/user_profile.php")
+                    .loader(getContext())
+                    .params("email", mEmail.getText().toString())
+                    .params("password", mPassword.getText().toString())
+                    .success(new ISuccess() {
+                        @Override
+                        public void onSuccess(String response) {
+                            //Toast.makeText(getContext(),response,Toast.LENGTH_SHORT).show();
+                            LatteLogger.json("USER_PROFILE", response);
+                            SignHandler.onSignIn(response, mISignListener);
+                        }
+                    })
+                    .build()
+                    .post();
+            //Toast.makeText(getContext(),"验证通过",Toast.LENGTH_SHORT).show();
+
         }
     }
 

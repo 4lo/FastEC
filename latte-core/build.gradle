@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 27
@@ -50,8 +51,10 @@ dependencies {
     api 'me.yokeyword:fragmentation-swipeback:1.3.5'
 
     //warning:不要试图修改依赖版本
-    api 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    //api 'com.jakewharton:butterknife:8.4.0'
+    //annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    api 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
 
     api 'com.squareup.okhttp3:parent:3.11.0'
@@ -72,4 +75,9 @@ dependencies {
     //json
     api 'com.alibaba:fastjson:1.2.47'
 
+    //logger
+    implementation 'com.orhanobut:logger:2.2.0'
+
+    //数据库
+    implementation 'org.greenrobot:greendao:3.2.2'
 }

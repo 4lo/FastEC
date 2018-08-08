@@ -1,3 +1,11 @@
 {
-  "key":"value"
+  "code": 0,
+  "message": "OK",
+  "data": {
+    "userId": 1,
+    "name": "wzl",
+    "avatar": "https://4lo-1255557501.cos.ap-beijing.myqcloud.com/0.jpg",
+    "gender": "男",
+    "address": "西安"
+  }
 }
