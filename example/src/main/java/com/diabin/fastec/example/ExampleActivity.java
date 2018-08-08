@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.diabin.latte.ec.launcher.LauncherDelegate;
 
+import com.diabin.latte.ec.main.EcBottomDelegate;
 import com.diabin.latte.ec.sign.ISignListener;
 import com.diabin.latte.ec.sign.SignIndelegate;
 import com.diabin.latte.ec.sign.SignUpDelegate;
@@ -48,11 +49,11 @@ public class ExampleActivity extends ProxyActivity implements ISignListener, ILa
         switch (tag) {
             case SIGNED:
                 Toast.makeText(this,"启动结束，signed in",Toast.LENGTH_LONG).show();
-                startWithPop(new ExampleDelegate());
+                startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
                 Toast.makeText(this,"启动结束，not signed in",Toast.LENGTH_LONG).show();
-                startWithPop(new SignIndelegate());
+                startWithPop(new EcBottomDelegate());
                 break;
             default:
                 break;

@@ -80,4 +80,8 @@ dependencies {
 
     //数据库
     implementation 'org.greenrobot:greendao:3.2.2'
+
+    //wechat
+    //noinspection GradleDynamicVersion
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }
