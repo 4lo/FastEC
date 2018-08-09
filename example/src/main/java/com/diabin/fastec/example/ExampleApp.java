@@ -1,9 +1,7 @@
 package com.diabin.fastec.example;
 
 import android.app.Application;
-import android.provider.ContactsContract;
-
-
+import com.diabin.latte.ec.icon.FontEcModule;
 import com.diabin.latte.ec.database.DatabaseManager;
 import com.diabin.latte_core.net.interceptors.DebugInterceptor;
 import com.diabin.latte_core.app.Latte;
@@ -17,9 +15,9 @@ public class ExampleApp extends Application{
         super.onCreate();
         Latte.init(this)
                 .withIcon(new FontAwesomeModule())
-                //.withIcon(new FontEcmodule())
+                .withIcon(new FontEcModule())
                 .withLoaderDelayed(1000)
-                .withInterceptor(new DebugInterceptor("index",R.raw.test))
+                .withInterceptor(new DebugInterceptor("index111",R.raw.test))
                 .withApiHost("http://127.0.0.1")
 
                 .configure();
