@@ -86,4 +86,6 @@ dependencies {
     api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 
 
+    //BaseRecyclerViewAdapterHelper
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 }

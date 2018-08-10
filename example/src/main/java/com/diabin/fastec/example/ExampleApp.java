@@ -17,11 +17,10 @@ public class ExampleApp extends Application{
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
                 .withLoaderDelayed(1000)
+                .withApiHost("http://192.168.123.120/api/")
                 .withInterceptor(new DebugInterceptor("index111",R.raw.test))
-                .withApiHost("http://127.0.0.1")
-
                 .configure();
-        initStetho();
+        //initStetho();
         DatabaseManager.getInstance().init(this);
     }
 
