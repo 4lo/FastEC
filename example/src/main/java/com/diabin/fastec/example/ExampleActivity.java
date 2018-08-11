@@ -14,9 +14,12 @@ import com.diabin.latte.ec.sign.ISignListener;
 import com.diabin.latte.ec.sign.SignIndelegate;
 import com.diabin.latte.ec.sign.SignUpDelegate;
 import com.diabin.latte_core.activities.ProxyActivity;
+import com.diabin.latte_core.app.Latte;
 import com.diabin.latte_core.delegates.LatteDelegate;
 import com.diabin.latte_core.ui.launcher.ILauncherListener;
 import com.diabin.latte_core.ui.launcher.OnLauncherFinishTag;
+
+import qiu.niorgai.StatusBarCompat;
 
 public class ExampleActivity extends ProxyActivity implements ISignListener, ILauncherListener{
 
@@ -24,9 +27,10 @@ public class ExampleActivity extends ProxyActivity implements ISignListener, ILa
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
+        //if (actionBar != null) {
+        //    actionBar.hide();
+        //}
+        //StatusBarCompat.translucentStatusBar(this,true);
     }
 
     @Override

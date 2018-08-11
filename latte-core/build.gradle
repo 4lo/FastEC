@@ -88,4 +88,27 @@ dependencies {
 
     //BaseRecyclerViewAdapterHelper
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+
+
+
+
+    api ("com.github.bumptech.glide:glide:4.7.1") {
+        exclude group: "com.android.support"
+    }
+    implementation "com.android.support:support-fragment:27.1.1"
+    api "com.github.bumptech.glide:okhttp3-integration:4.7.1"
+
+    //banner
+    api 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
+
+    //---
+    api 'com.choices.divider:RecyclerView_Divider:1.0.0'
+
+    api ('com.github.niorgai:StatusBarCompat:2.1.4', {
+        exclude group: 'com.android.support'
+    })
+
+
+    api "com.google.auto.value:auto-value-annotations:1.6.2"
+    annotationProcessor "com.google.auto.value:auto-value:1.6.2"
 }

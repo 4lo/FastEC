@@ -23,7 +23,7 @@ public class IndexDataConverter extends DataConverter{
             final String text = data.getString("text");
             final int spanSize = data.getInteger("spanSize");
             final int id = data.getInteger("goodsId");
-            final JSONArray banners = data.getJSONArray("banners");
+            final JSONArray banners = data.getJSONArray("banner");
 
             final ArrayList<String> bannerImages = new ArrayList<>();
             int type = 0;

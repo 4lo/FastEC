@@ -9,7 +9,6 @@ public class MultipleEntityBuilder {
 
     public MultipleEntityBuilder() {
         FIELDS.clear();
-
     }
 
     public final MultipleEntityBuilder setItemType(int itemType) {

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -18,6 +20,7 @@
         android:id="@+id/tb_index"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        app:layout_behavior="com.diabin.latte.ec.main.index.TranslucentBehavior"
         android:background="@android:color/transparent"
         >
 
@@ -34,7 +37,7 @@
                 android:gravity="center"
                 android:paddingRight="10dp"
                 android:text="{fa-barcode}"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/white"
                 android:textSize="25sp"
                 />
 
