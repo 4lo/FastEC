@@ -33,6 +33,6 @@ public class EcBottomDelegate extends BaseButtonDelegate {
 
     @Override
     public int setClickedColor() {
-        return Color.parseColor("#ffff8800");
+        return Color.parseColor("#FF63B8FF");
     }
 }

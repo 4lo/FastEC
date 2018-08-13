@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.diabin.latte.ec.R;
 import com.diabin.latte.ec.R2;
+import com.diabin.latte.ec.main.EcBottomDelegate;
 import com.diabin.latte_core.delegates.button.BottomItemDelegate;
 import com.diabin.latte_core.net.RestClient;
 import com.diabin.latte_core.net.callback.ISuccess;
@@ -70,6 +71,8 @@ public class IndexDelegate extends BottomItemDelegate{
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(),R.color.app_background), 5));
+        final EcBottomDelegate ecBottomDelegate = getParentDelegate();
+        mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
     }
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {

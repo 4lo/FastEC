@@ -19,23 +19,22 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_index"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="40dp"
         app:layout_behavior="com.diabin.latte.ec.main.index.TranslucentBehavior"
-        android:background="@android:color/transparent"
+        android:background="@color/toolbar"
         >
 
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
             <com.joanzapata.iconify.widget.IconTextView
                 android:id="@+id/icon_index_scan"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_gravity="left"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:paddingRight="10dp"
                 android:text="{fa-barcode}"
                 android:textColor="@android:color/white"
                 android:textSize="25sp"
@@ -43,13 +42,13 @@
 
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/et_search_view"
+
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:gravity="center"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="4"
-                android:background="@android:color/white"
-                android:paddingLeft="20dp"
+                android:layout_gravity="center"
+                android:layout_weight="6"
+                android:background="@drawable/edit_style"
                 android:hint="搜索"/>
 
             <com.joanzapata.iconify.widget.IconTextView
@@ -57,9 +56,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_gravity="right"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:paddingLeft="10dp"
                 android:text="{fa-rocket}"
                 android:textColor="@android:color/white"
                 android:textSize="25sp"
