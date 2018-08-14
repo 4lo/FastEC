@@ -2,4 +2,7 @@
 <resources>
     <color name="app_background">#1111</color>
     <color name="toolbar">#63B8FF</color>
+    <color name="we_chat_black">#323232</color>
+    <color name="item_backgraound">#f1f1f1</color>
+    <color name="app_mian">@android:color/holo_orange_dark</color>
 </resources>
